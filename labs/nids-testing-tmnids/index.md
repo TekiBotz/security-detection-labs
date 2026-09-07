@@ -1,4 +1,9 @@
-- [Learning Objectives](#learning-objectivies)
+---
+title: Testing NIDS with tmNIDS
+permalink: /labs/nids-testing-tmnids/
+---
+
+- [Learning Objectives](#learning-objectives)
 - [Lab Setup](#lab-setup)
 - [Logical Network Diagram](#logical-network-diagram)
 - [Software/Tools](#softwaretools)
@@ -62,8 +67,5 @@ This project demonstrates the effectiveness of using tmNIDS to test Suricata's d
 
 ## Link Tree
 ***
-[Linkenin](https://www.linkedin.com/in/jarrale-butts/)
-[GitHub](https://github.com/TekiBotz)
 
-This page was customized by Jarrale Butts to enhance your experience.
-[Top](#top)
+{% include linktree.html %}
