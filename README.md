@@ -1,79 +1,26 @@
-- [Learning Objectives](#learning-objectivies)
-- [Lab Setup](#lab-setup)
-- [Logical Network Diagram](#logical-network-diagram)
-- [Software](#software)
-- [Attack Simulation](#attack-simulation)
-- [Output](#output)
-- [Conclusion](#conclusion)
-- [Link Tree](#link-tree)
+# Security Detection Labs
 
-## Learning Objectives
-***
- - Understand Nmap, a popular network scanner, and its capabilities.
- - Simulate network scanning attacks with Nmap.
- - Verify the effectiveness of Suricata IDS rules in detecting scans.
- - Visualize Suricata alerts on the Wazuh dashboard for analysis.
+A small collection of hands-on home-lab write-ups focused on **network intrusion
+detection** — building a monitored environment with [Suricata](https://suricata.io/)
+as the IDS and [Wazuh](https://wazuh.com/) for centralized alerting and
+visualization, then generating hostile traffic against it and confirming the
+detections fire.
 
-## Lab Setup
-***
-### Components:
- - Attacker machine (Ubuntu Desktop Hosted on VMWare)
- - Target machine (Ubuntu Server Hosted on VMWare) with Wazuh agent and Suricata installed
- - Wazuh server (Ubuntu Server Hosted on Google Cloud Platform)
+Each lab runs the same core stack (Ubuntu VMs on VMware for the endpoints, a
+Wazuh manager on Google Cloud) and is documented end to end: objectives, network
+topology, the tools involved, the attack or test procedure, the resulting Suricata
+alerts in the Wazuh dashboard, and takeaways.
 
-## Logical Network Diagram
-***
-![Network Scanning Probe Attack and Detection drawio](https://github.com/user-attachments/assets/0b9e0f98-f644-4e20-974a-61a33993e876)
+## Labs
 
-## Software
-***
- - Nmap
- - Wazuh
- - Suricata
-  
-## Attack Simulation
-***
-1. Scanning for Open Ports (SYN Scan):
-- Open a terminal on the attacker machine and run: nmap -sS -Pn 10.0.2.5  // Replace with target IP
-- This command performs a SYN scan (half-open) to identify open ports on the target machine.
-2. Scanning for Software Versions (Version Scan):
-- Run the following command to identify software versions: nmap -sS -sV -Pn 10.0.2.5 // Replace with target IP
-- This command combines a SYN scan with a version scan.
+- **[Network Scanning Probe Attack and Detection](labs/nmap-scan-detection/)** —
+  run Nmap SYN and version scans from an attacker VM against a Wazuh-agent target,
+  and verify Suricata's ET ruleset flags the reconnaissance in the Wazuh
+  Security Events view.
+- **[Testing NIDS with tmNIDS](labs/nids-testing-tmnids/)** — use the
+  [tmNIDS](https://github.com/3CORESec/testmynids.org) framework to fire a battery
+  of known-malicious patterns (suspicious User-Agent, Tor connection, and the full
+  test suite) at Suricata and analyze the alerts it raises in Wazuh.
 
-## Output
-***
-The output will display discovered open ports and potentially software versions running on the target machine.
-
-![NmapScan](https://github.com/user-attachments/assets/ec54b462-7ad4-4eab-a294-7ab279db1360)
-
-### Wazuh Alert Visualization
-1. Login to the Wazuh manager and navigate to "Security Events".
-2. Select the target machine (Wazuh agent) from the list.
-3. You should see Suricata alerts generated for the detected network scanning attempts.
-
-### Filtering Alerts:
-- Use the filter rule.group: suricata to focus on Suricata-related alerts.
-![WazuhNmapEvents](https://github.com/user-attachments/assets/8a68c22c-1ada-44e3-ad1b-569be84e2243)
-
-### Alert Details:
-Expand an alert for details such as:
-- Rule signature (e.g., ET SCAN Potential SSH Scan OUTBOUND)
-- Source and destination IP addresses
-- Action taken by Wazuh
-- Severity level of the event
-
-## Conclusion
-***
-This project demonstrates how Suricata effectively detects network scanning probes using the ET ruleset. Wazuh visualizes these alerts, allowing security personnel to identify potential threats and investigate further.
-### Additional Notes:
- - Network scanning is a legitimate tool for network administrators, but malicious actors also utilize it for reconnaissance.
- - Suricata provides a robust way to detect suspicious scanning activity on your network.
- - Wazuh enhances security posture by offering centralized management and visualization of security events.
-
-## Link Tree
-***
-[Linkenin](https://www.linkedin.com/in/jarrale-butts/)
-[GitHub](https://github.com/TekiBotz)
-
-This page was customized by Jarrale Butts to enhance your experience.
-[Top](#top)
+On the published site these are served at `/labs/nmap-scan-detection/` and
+`/labs/nids-testing-tmnids/`.

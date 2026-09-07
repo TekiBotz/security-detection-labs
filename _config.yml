@@ -1,7 +1,7 @@
 # Site settings
-title: Network Scanning Probe Attack and Detection
-description: This security lab explores network scanning probes, a common tactic used in hacking attempts, and demonstrates how Wazuh can detect them using Suricata IDS (Intrusion Detection System).
-url: "https://NSPDA.github.io"
+title: Security Detection Labs
+description: Home-lab write-ups on detecting network attacks with Suricata IDS and Wazuh — an Nmap scanning-probe detection lab and a tmNIDS NIDS-testing lab.
+url: "https://NSPAD.github.io"
 
 # Markdown options
 markdown: kramdown
