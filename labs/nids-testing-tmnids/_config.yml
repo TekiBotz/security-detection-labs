@@ -1,0 +1,14 @@
+# Site settings
+title: Testing NIDS with tmNIDS
+description: This security lab explores Network Intrusion Detection Systems (NIDS) testing with tmNIDS, a framework designed to evaluate NIDS like Suricata.
+url: "https://tmNIDS.github.io"
+
+# Markdown options
+markdown: kramdown
+
+# Theme settings (Jekyll theme)
+#theme: jekyll-theme-hacker
+
+remote_theme: pages-themes/hacker@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
