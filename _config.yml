@@ -1,7 +1,7 @@
 # Site settings
 title: Security Detection Labs
 description: Home-lab write-ups on detecting network attacks with Suricata IDS and Wazuh — an Nmap scanning-probe detection lab and a tmNIDS NIDS-testing lab.
-url: "https://NSPAD.github.io"
+url: "https://tekibotz.github.io/security-detection-labs"
 
 # Markdown options
 markdown: kramdown
